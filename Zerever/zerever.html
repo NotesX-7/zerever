@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zerever</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=IBM%20Plex%20Sans:500|IBM%20Plex%20Sans:300" rel="stylesheet">
+  <style>
+    :root { --m: 4rem; }
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      color: #d5d5d5;
+      margin: 0;
+      background-color: black;
+    }
+    header {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem; /* Reducir padding vertical */
+  background-color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  height: 60px; /* Altura fija opcional */
+}
+
+.logo img {
+  max-height: 200px; /* Limitar altura del logo */
+  width: auto; /* Mantener proporción */
+}
+
+nav a {
+  font-size: 0.9rem; /* Reducir tamaño de fuente */
+  padding: 0.3rem 0.5rem; /* Ajustar padding de los links */
+}
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: cyan;
+      animation: pulse 2s infinite;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+  color: #1a1a1a;
+  font-weight: 600; /* Negrita elegante */
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Sutil sombreado al pasar el ratón */
+  color: #000; /* Refuerza el contraste al hacer hover */
+}
+
+    nav a:hover { color: cyan; }
+    main {
+      padding: 7rem 2rem 2rem;
+    }
+    section {
+      max-width: 800px;
+      margin: 0 auto 8rem;
+      animation: fadeIn 1s ease-out;
+    }
+    h1, h2 { color: cyan; text-shadow: 0 0 10px cyan; }
+    .divider {
+      border-top: 2px dashed rgba(255, 255, 255, 0.2);
+      height: 8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .divider span {
+      color: rgba(255, 255, 255, 0.3);
+      font-style: italic;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Scroll Card */
+    .card {
+      height: calc(8 * var(--m));
+      width: calc(12 * var(--m));
+      background: linear-gradient(120deg, #ff8064, #725bdc);
+      color: black;
+      border-radius: calc(0.5 * var(--m));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--m);
+      position: fixed;
+      margin: calc(2 * var(--m)) calc(5 * var(--m));
+      z-index: 1000;
+    }
+    .card button {
+      background-color: black;
+      font-size: calc(0.4 * var(--m));
+      border: none;
+      color: #e5e5e5;
+      font-weight: 400;
+      padding: calc(0.35 * var(--m)) calc(0.8 * var(--m));
+      border-radius: calc(0.3 * var(--m));
+      cursor: pointer;
+    }
+    .card button a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* Footer */
+    footer {
+      margin-top: 80vh;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: flex-end;
+      padding: 5rem 2vw;
+      position: relative;
+      z-index: 500;
+    }
+    footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0) 5%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.8) 40%, black 50%);
+      z-index: -7;
+    }
+    .backdrop {
+      z-index: -5;
+      position: absolute;
+      inset: 0;
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      mask-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.8) 20%, black 30%);
+      -webkit-mask-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.8) 20%, black 30%);
+    }
+    .col {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: calc(0.3 * var(--m)) calc(0.8 * var(--m));
+      width: 28%;
+    }
+    .col2, .col3 {
+      background-color: #121212;
+      border-radius: calc(0.5 * var(--m));
+    }
+    .social {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+    .link {
+      width: calc(0.8 * var(--m));
+      height: calc(0.8 * var(--m));
+      background-color: rgba(255,255,255,0.1);
+      border-radius: calc(0.1 * var(--m));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .link img {
+      height: calc(0.3 * var(--m));
+      object-fit: cover;
+    }
+    @media screen and (max-width: 1000px) {
+      :root { --m: 3rem; }
+    }
+    @media screen and (max-width: 700px) {
+      footer {
+        flex-direction: column;
+        padding: 5rem 20vw;
+      }
+      .col { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><img src="zereversinfondo (1).png" alt="zerever"></div>
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#sobre">Sobre Nosotros</a>
+    </nav>
+  </header>
+
+  <main> 
+    <section id="inicio">
+      <h1>Bienvenido al futuro</h1>
+      <p>Diseño limpio, impacto visual y espacio para crecer.</p>
+    </section>
+
+    <section id="sobre">
+      <h2>Sobre mí</h2>
+      <p>
+        Este es un espacio donde podrás contar tu historia, tu visión o la de tu marca. El diseño modular te permite extenderlo fácilmente.
+      </p>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <p>Aquí puedes mostrar tus trabajos más relevantes con estilo.</p>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>Incluye tus redes, un formulario o cualquier método para conectar contigo.</p>
+    </section>
+
+    <section id="nueva-seccion" class="animate-fade-in">
+  <h2>Sección Adicional</h2>
+  <p>Este bloque fue insertado en el área de expansión de contenido. Aquí puedes incluir más información, imágenes, estadísticas u otros módulos personalizados.</p>
+</section>
+<div class="divider">
+  <span>Aquí puedes añadir más secciones en el futuro</span>
+</div>
+<section id="scroll-block" class="scroll-block">
+
+    <div class="scroll-item">
+      <div class="scroll-text slide-left">
+        <h2>Explora el Futuro</h2>
+        <p>Sumérgete en un universo donde el diseño se une con la tecnología.</p>
+      </div>
+      <div class="scroll-img slide-right">
+        <img src="https://source.unsplash.com/800x600/?technology,future" alt="Futuro" />
+      </div>
+    </div>
+    <div class="scroll-item reverse">
+      <div class="scroll-img slide-left">
+        <img src="https://source.unsplash.com/800x600/?cyberpunk,city" alt="Cyberpunk City" />
+      </div>
+      <div class="scroll-text slide-right">
+        <h2>Estética Neón</h2>
+        <p>Colores vibrantes y atmósferas envolventes que estimulan la vista.</p>
+      </div>
+    </div>
+    <div class="scroll-item">
+      <div class="scroll-text slide-left">
+        <h2>Potencia Creativa</h2>
+        <p>Desata tu imaginación y transforma tu visión en realidades digitales.</p>
+      </div>
+      <div class="scroll-img slide-right">
+        <img src="https://source.unsplash.com/800x600/?ai,digital" alt="IA Digital" />
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <section>
+    
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flip Boxes Grid</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .grid {
+      display: grid;
+      gap: 100px;
+      grid-template-columns: repeat(4, 1fr);
+
+    }
+
+    .flip-card {
+      background-color: transparent;
+      width: 150%;
+      height: 240px;
+      perspective: 1000px;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 1.2s ease-in-out;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background-color: #FFFF;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .flip-front img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 0.8rem;
+    }
+
+    .flip-front h3 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+      font-size: 0.95rem;
+      padding: 1.2rem;
+    }
+
+    @media (hover: none) {
+      .flip-card:active .flip-inner {
+        transform: rotateY(180deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920337.png" alt="Wifi">
+          <h3>CRM</h3>
+        </div>
+        <div class="flip-back">
+          Conexión wifi de alta velocidade con fibra óptica en todo o espazo.
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.flaticon.com/512/2933/2933186.png" alt="Cafetería">
+          <h3>Cafetería</h3>
+        </div>
+        <div class="flip-back">
+          Espazo común con cafeteira, snacks e zona de descanso.
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.flaticon.com/512/2598/2598693.png" alt="Ximnasio">
+          <h3>Ximnasio</h3>
+        </div>
+        <div class="flip-back">
+          Instalacións deportivas e ximnasio dispoñibles para todos os usuarios.
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
+          <h3>Salas de reunións</h3>
+        </div>
+        <div class="flip-back">
+          Salas equipadas para formacións, charlas e reunións profesionais.
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
+          <h3>Salas de reunións</h3>
+        </div>
+        <div class="flip-back">
+          Salas equipadas para formacións, charlas e reunións profesionais.
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
+          <h3>Salas de reunións</h3>
+        </div>
+        <div class="flip-back">
+          Salas equipadas para formacións, charlas e reunións profesionais.
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
+          <h3>Salas de reunións</h3>
+        </div>
+        <div class="flip-back">
+          Salas equipadas para formacións, charlas e reunións profesionais.
+        </div>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
+          <h3>Salas de reunións</h3>
+        </div>
+        <div class="flip-back">
+          Salas equipadas para formacións, charlas e reunións profesionais.
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>
+
+  </section>
+  
+  <style>
+    .scroll-block {
+      max-width: 1200px;
+      margin: 0 auto 6rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6rem;
+    }
+  
+    .scroll-item {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      overflow: hidden;
+    }
+  
+    .scroll-item.reverse {
+      flex-direction: row-reverse;
+    }
+  
+    .scroll-img img,
+    .scroll-text {
+      opacity: 0;
+      transition: transform 1s ease-out, opacity 1.2s ease-in;
+    }
+  
+    .slide-left {
+      transform: translateX(-60px);
+    }
+  
+    .slide-right {
+      transform: translateX(60px);
+    }
+  
+    .scroll-item.show .slide-left,
+    .scroll-item.show .slide-right {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  
+    .scroll-text h2 {
+      color: cyan;
+      text-shadow: 0 0 10px cyan;
+      margin-bottom: 0.5rem;
+    }
+  
+    .scroll-text p {
+      color: #d5d5d5;
+      font-size: 1.1rem;
+    }
+  
+    .scroll-img img {
+      max-width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px cyan;
+    }
+  
+    @media (max-width: 768px) {
+      .scroll-item,
+      .scroll-item.reverse {
+        flex-direction: column;
+      }
+  
+      .slide-left,
+      .slide-right {
+        transform: translateY(60px);
+      }
+  
+      .scroll-item.show .slide-left,
+      .scroll-item.show .slide-right {
+        transform: translateY(0);
+      }
+    }
+    @media (hover: none) {
+      .flip-card:active .flip-inner {
+        transform: rotateY(180deg);
+      }
+    }
+  </style>
+  
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.2 });
+  
+    document.querySelectorAll('.scroll-item').forEach(el => observer.observe(el));
+  </script>
+</main>
+
+  <footer id="footer">
+    <div class="col col1">
+      <h3>Zerever</h3>
+      <p>Una marca de<a href="https://www.flinq.es/" style="color: #0b5736;"> Flinq Ingeniería S.L</a></span></p>
+      <div class="social">
+        <a href="https://codepen.io/Juxtopposed" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt="CodePen"></a>
+        <a href="https://twitter.com/juxtopposed" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt="Twitter"></a>
+        <a href="https://youtube.com/@juxtopposed" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/youtube_1.png" alt="YouTube"></a>
+      </div>
+      <p style="color: #818181; font-size: smaller;">2025 © Zerever, Flinq Ingeniería SL</p>
+    </div>
+    <div class="col col2">
+      <p>Sobre Nosotros</p><p>Contacto</p><p>Política De Privacidad</p><p>Aviso Legal</p>
+    </div>
+    <div class="col col3">
+      <p><b>Próximamente...</b></p><p>Bases De Precios</p><p>Catálogo De Precios</p><p>Datos GIS</p>
+    </div>
+    <div class="backdrop"></div>
+  </footer>
+</body>
+</html>
