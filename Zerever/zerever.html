@@ -77,7 +77,7 @@ nav a:hover {
       margin: 0 auto 8rem;
       animation: fadeIn 1s ease-out;
     }
-    h1, h2 { color: cyan; text-shadow: 0 0 10px cyan; }
+    h1, h2 { color: cyan; text-shadow: 0 0 10px #37474f; }
     .divider {
       border-top: 2px dashed rgba(255, 255, 255, 0.2);
       height: 8rem;
@@ -127,19 +127,18 @@ nav a:hover {
       color: inherit;
       text-decoration: none;
     }
-    /* Footer */
     footer {
-      margin-top: 80vh;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-      align-items: flex-end;
-      padding: 5rem 2vw;
-      position: relative;
-      z-index: 500;
-    }
+  width: 100%;
+  height: 30vh; /* Cambia este valor según la altura que desees */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 4rem 2rem;
+  background-color: #0f0f0f; /* o el color que estés usando */
+  color: white;
+  position: relative;
+}
     footer::before {
       content: "";
       position: absolute;
@@ -199,7 +198,12 @@ nav a:hover {
 </head>
 <body>
   <header>
-    <div class="logo"><img src="zereversinfondo (1).png" alt="zerever"></div>
+    <div class="logo">
+      <a href="zerever.html">
+        <img src="zereversinfondo.png" alt="zerever" style="cursor: pointer;" />
+      </a>
+    </div>
+    
     <nav>
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
@@ -209,68 +213,282 @@ nav a:hover {
   </header>
 
   <main> 
-    <section id="inicio">
-      <h1>Bienvenido al futuro</h1>
-      <p>Diseño limpio, impacto visual y espacio para crecer.</p>
+    <section class="hero-container">
+      <div class="hero-text">
+        <small>Bienvenido a Zerever</small>
+        <h1>Impulsa tu empresa con soluciones ERP inteligentes</h1>
+        <p>
+          En Zerever ayudamos a digitalizar, automatizar y escalar tu negocio con Odoo.<br />
+          Un solo sistema, infinitas posibilidades para que tu empresa crezca sin límites.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn-contacto">Contáctanos</a>
+          <a href="#por-que-zerever" class="btn-seguir">Seguir ↓</a>
+        </div>
+      </div>
+    
+      <div class="hero-image">
+        <img src="https://imgs.search.brave.com/Ydnjb3MLN0bzIJzbAcEX5P3opN9hoN62MEaKhIn_O2k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvbG9nb3MtMy82/NDAvb2Rvb19sb2dv/X3JnYi01MTIucG5n" alt="Logo Odoo" class="floating-logo"/>
+      </div>
     </section>
-
-    <section id="sobre">
-      <h2>Sobre mí</h2>
-      <p>
-        Este es un espacio donde podrás contar tu historia, tu visión o la de tu marca. El diseño modular te permite extenderlo fácilmente.
-      </p>
-    </section>
-
-    <section id="proyectos">
-      <h2>Proyectos</h2>
-      <p>Aquí puedes mostrar tus trabajos más relevantes con estilo.</p>
-    </section>
-
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>Incluye tus redes, un formulario o cualquier método para conectar contigo.</p>
-    </section>
-
-    <section id="nueva-seccion" class="animate-fade-in">
-  <h2>Sección Adicional</h2>
-  <p>Este bloque fue insertado en el área de expansión de contenido. Aquí puedes incluir más información, imágenes, estadísticas u otros módulos personalizados.</p>
+    
 </section>
-<div class="divider">
-  <span>Aquí puedes añadir más secciones en el futuro</span>
-</div>
+<div class="mi-seccion">
+<section class="centered-animated">
+  <h1>¿Por qué Zerever?</h1>
+</section>
+
+<style>
+  .texto-bienvenida {
+  margin-left: 2.5rem;
+}
+  .titulo-modulos {
+  font-size: 2.5rem;
+  text-align: center;
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+  margin-bottom: 3rem;
+  animation: fade-in-top 1.2s ease-out both;
+}
+
+@keyframes fade-in-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-modulos {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+}
+
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.floating-logo {
+  animation: float 4s ease-in-out infinite;
+  max-width: 100%;
+  height: auto;
+}
+
+  .hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 0 10rem;
+  max-width: 1400px;
+  margin: 0 auto 6rem;
+  background-color: #0000;
+  border-radius: 1.5rem;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+.hero-text {
+  flex: 1;
+  margin-left: 2.5rem;
+  min-width: 300px;
+}
+
+.hero-text small {
+  color: #4dd0e1;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  color: white;
+  margin: 1rem 0 1.5rem;
+}
+
+.hero-text p {
+  color: #cfd8dc;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-buttons a {
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-contacto {
+  background-color: white;
+  color: #0b1f1d;
+}
+
+.btn-contacto:hover {
+  background-color: #f5f5f5;
+}
+
+.btn-seguir {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-seguir:hover {
+  background-color: white;
+  color: #0b1f1d;
+}
+
+.hero-image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image {
+    margin-top: 2rem;
+  }
+}
+
+.centered-animated {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 1vh;
+  padding: 3rem;
+  text-align: center;
+  background-color: #FFFF;
+  animation: fadeSlide 1.2s ease-out;
+  margin-bottom: -2rem; /* 🔽 Esto reduce el espacio de abajo */
+}
+
+
+
+  .centered-animated h1 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem); /* Escalable para móviles */
+    color: #37474f;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  @keyframes fadeSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .centered-animated {
+      padding: 3rem 1rem;
+    }
+
+    .centered-animated h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+
 <section id="scroll-block" class="scroll-block">
 
-    <div class="scroll-item">
-      <div class="scroll-text slide-left">
-        <h2>Explora el Futuro</h2>
-        <p>Sumérgete en un universo donde el diseño se une con la tecnología.</p>
-      </div>
-      <div class="scroll-img slide-right">
-        <img src="https://source.unsplash.com/800x600/?technology,future" alt="Futuro" />
-      </div>
+  <!-- 1. Soporte cercano y experto -->
+  <div class="scroll-item">
+    <div class="scroll-text slide-left">
+      <h2>Soporte cercano y experto</h2>
+      <p>En Zerever no solo resolvemos incidencias, te acompañamos. Nuestro equipo técnico conoce tu negocio y te ofrece soluciones rápidas, personalizadas y con lenguaje claro. Estás en buenas manos.</p>
     </div>
-    <div class="scroll-item reverse">
-      <div class="scroll-img slide-left">
-        <img src="https://source.unsplash.com/800x600/?cyberpunk,city" alt="Cyberpunk City" />
-      </div>
-      <div class="scroll-text slide-right">
-        <h2>Estética Neón</h2>
-        <p>Colores vibrantes y atmósferas envolventes que estimulan la vista.</p>
-      </div>
-    </div>
-    <div class="scroll-item">
-      <div class="scroll-text slide-left">
-        <h2>Potencia Creativa</h2>
-        <p>Desata tu imaginación y transforma tu visión en realidades digitales.</p>
-      </div>
-      <div class="scroll-img slide-right">
-        <img src="https://source.unsplash.com/800x600/?ai,digital" alt="IA Digital" />
-      </div>
-    </div>
-  </section>
-  <br>
+  </div>
 
-  <section>
+  <!-- 2. Integraciones a medida -->
+  <div class="scroll-item reverse">
+    <div class="scroll-text slide-right">
+      <h2>Integraciones a medida</h2>
+      <p>Adaptamos Odoo a tus procesos y herramientas, no al revés. Creamos conexiones únicas con tu ERP, desde e-commerce y CRMs hasta software contable o soluciones internas. Todo fluye.</p>
+    </div>
+  </div>
+
+  <!-- 3. Formación, implantación y mantenimiento -->
+  <div class="scroll-item">
+    <div class="scroll-text slide-left">
+      <h2>Formación, implantación y mantenimiento</h2>
+      <p>Te guiamos paso a paso desde el análisis hasta la puesta en marcha, y nos mantenemos contigo con formaciones prácticas y soporte continuo. Aprovecha todo el potencial de Odoo sin complicaciones.</p>
+    </div>
+  </div>
+</div>
+<section id="que-es-odoo" class="odoo-section">
+  <div class="odoo-text-container">
+    <div class="scroll-item slide-left">
+      <h2>¿Qué es Odoo?</h2>
+    </div>
+    <div class="scroll-item slide-left">
+      <p>
+        Odoo es un sistema ERP integral y modular diseñado para digitalizar todos los procesos de tu empresa. Desde ventas y contabilidad, hasta RRHH o inventario, todo en una sola plataforma.
+      </p>
+    </div>
+    <div class="scroll-item slide-left">
+      <p>
+        Gracias a su diseño escalable, Odoo crece contigo. Empieza con lo esencial y añade funcionalidades a medida que tu empresa evoluciona. Sin límites, sin complicaciones.
+      </p>
+    </div>
+    <div class="scroll-item slide-left">
+      <p>
+        Con una comunidad global y desarrollo open source, Odoo garantiza innovación constante y seguridad. Su interfaz intuitiva lo hace fácil de usar desde el primer día.
+      </p>
+    </div>
+  </div>
+
+  <div class="odoo-icons scroll-item slide-right">
+    <img src="https://www.garber.es/web/image/74367-f8f39efc/Aplicaciones%20de%20odoo%20totalmente%20integradas.webp" alt="Panel de módulos de Odoo">
+  </div>
+</section>
+
+
+
+
+<section>
     
 <!DOCTYPE html>
 <html lang="es">
@@ -280,6 +498,98 @@ nav a:hover {
   <title>Flip Boxes Grid</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
+.odoo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 5rem 2rem;
+  background-color: #000;
+  color: white;
+}
+
+.odoo-text-container {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.odoo-text-container h2 {
+  color: #00eaff;
+  text-shadow: 0 0 10px cyan;
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.odoo-text-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: #e0e0e0;
+  text-align: justify;
+}
+
+/* Animaciones iniciales */
+.slide-left,
+.slide-right {
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 1.2s ease-in;
+}
+
+.slide-left {
+  transform: translateX(-60px);
+}
+
+.slide-right {
+  transform: translateX(60px);
+}
+
+.scroll-item.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.odoo-icons img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .odoo-text-container h2 {
+    font-size: 2rem;
+  }
+
+  .slide-left,
+  .slide-right {
+    transform: translateY(40px);
+  }
+
+  .scroll-item.show {
+    transform: translateY(0);
+  }
+
+  .odoo-icons {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .odoo-icons img {
+    width: 90%;
+  }
+}
+
+
+    
+    .mi-seccion {
+  background-color: #FFFF;
+}
+
     .grid {
       display: grid;
       gap: 100px;
@@ -331,12 +641,14 @@ nav a:hover {
     .flip-front h3 {
       font-size: 1rem;
       margin: 0;
+      color: black;
     }
 
     .flip-back {
       transform: rotateY(180deg);
       font-size: 0.95rem;
       padding: 1.2rem;
+      color: black;
     }
 
     @media (hover: none) {
@@ -347,15 +659,30 @@ nav a:hover {
   </style>
 </head>
 <body>
+  <section class="modulos-section">
+    <h2 class="titulo-modulos">Módulos De Odoo Para Tu Empresa</h2>
+  </section>
+  
   <div class="grid">
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
-          <img src="https://cdn-icons-png.flaticon.com/512/2920/2920337.png" alt="Wifi">
+          <img src="https://cdn-icons-png.freepik.com/256/2464/2464106.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="CRM">
           <h3>CRM</h3>
         </div>
         <div class="flip-back">
-          Conexión wifi de alta velocidade con fibra óptica en todo o espazo.
+          Permite gestionar clientes potenciales, oportunidades y actividades comerciales. Mejora la organización del equipo comercial y aumenta la tasa de cierre.        </div>
+      </div>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://cdn-icons-png.freepik.com/256/671/671712.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Contabilidad">
+          <h3>Contabilidad</h3>
+        </div>
+        <div class="flip-back">
+          Automatiza procesos contables, genera informes financieros y facilita la conciliación bancaria. Ideal para llevar el control económico con precisión y menos esfuerzo.
         </div>
       </div>
     </div>
@@ -363,11 +690,11 @@ nav a:hover {
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
-          <img src="https://cdn-icons-png.flaticon.com/512/2933/2933186.png" alt="Cafetería">
-          <h3>Cafetería</h3>
+          <img src="https://cdn-icons-png.freepik.com/256/5567/5567326.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Ventas">
+          <h3>Ventas</h3>
         </div>
         <div class="flip-back">
-          Espazo común con cafeteira, snacks e zona de descanso.
+          Gestiona todo el ciclo de ventas, desde presupuestos hasta pedidos. Ayuda a automatizar tareas y mejora la conversión gracias a seguimientos y cotizaciones profesionales.
         </div>
       </div>
     </div>
@@ -375,67 +702,52 @@ nav a:hover {
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
-          <img src="https://cdn-icons-png.flaticon.com/512/2598/2598693.png" alt="Ximnasio">
-          <h3>Ximnasio</h3>
+          <img src="https://cdn-icons-png.freepik.com/256/8568/8568099.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Inventario">
+          <h3>Inventario</h3>
         </div>
         <div class="flip-back">
-          Instalacións deportivas e ximnasio dispoñibles para todos os usuarios.
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card">
-      <div class="flip-inner">
-        <div class="flip-front">
-          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
-          <h3>Salas de reunións</h3>
-        </div>
-        <div class="flip-back">
-          Salas equipadas para formacións, charlas e reunións profesionais.
+          Controla el stock en tiempo real y optimiza la cadena de suministro. Reduce errores, mejora la trazabilidad y evita rupturas de stock.
         </div>
       </div>
     </div>
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
-          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
-          <h3>Salas de reunións</h3>
+          <img src="https://cdn-icons-png.freepik.com/256/3674/3674192.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Facturación">
+          <h3>Facturación</h3>
         </div>
         <div class="flip-back">
-          Salas equipadas para formacións, charlas e reunións profesionais.
-        </div>
+          Genera facturas automáticamente a partir de ventas o proyectos. Ahorra tiempo administrativo y mejora la relación con el cliente gracias a un sistema ágil.        </div>
       </div>
     </div>
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
-          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
-          <h3>Salas de reunións</h3>
+          <img src="https://cdn-icons-png.freepik.com/256/1087/1087927.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Proyecto">
+          <h3>Proyecto</h3>
         </div>
         <div class="flip-back">
-          Salas equipadas para formacións, charlas e reunións profesionais.
-        </div>
+          Organiza tareas, asigna responsables y visualiza avances en proyectos. Aumenta la productividad y claridad de los equipos en cada fase de ejecución.        </div>
       </div>
     </div>
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
-          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
-          <h3>Salas de reunións</h3>
+          <img src="https://cdn-icons-png.freepik.com/256/8456/8456551.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Compras">
+          <h3>Compras</h3>
         </div>
         <div class="flip-back">
-          Salas equipadas para formacións, charlas e reunións profesionais.
-        </div>
+          Automatiza solicitudes de oferta, órdenes de compra y validación de proveedores. Reduce costes y mejora la negociación con datos precisos.        </div>
       </div>
     </div>
     <div class="flip-card">
       <div class="flip-inner">
         <div class="flip-front">
-          <img src="https://cdn-icons-png.flaticon.com/512/2913/2913465.png" alt="Salas de reunións">
-          <h3>Salas de reunións</h3>
+          <img src="https://cdn-icons-png.freepik.com/256/8654/8654547.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Recursos Humanos (HR)">
+          <h3>Recursos Humanos (HR)</h3>
         </div>
         <div class="flip-back">
-          Salas equipadas para formacións, charlas e reunións profesionais.
+          Gestiona empleados, ausencias, nóminas y reclutamiento. Facilita la administración del personal y mejora la experiencia del empleado en la empresa.
         </div>
       </div>
     </div>
@@ -447,84 +759,122 @@ nav a:hover {
   </section>
   
   <style>
-    .scroll-block {
-      max-width: 1200px;
-      margin: 0 auto 6rem;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 6rem;
-    }
-  
-    .scroll-item {
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-      overflow: hidden;
-    }
-  
-    .scroll-item.reverse {
-      flex-direction: row-reverse;
-    }
-  
-    .scroll-img img,
-    .scroll-text {
-      opacity: 0;
-      transition: transform 1s ease-out, opacity 1.2s ease-in;
-    }
-  
-    .slide-left {
-      transform: translateX(-60px);
-    }
-  
-    .slide-right {
-      transform: translateX(60px);
-    }
-  
-    .scroll-item.show .slide-left,
-    .scroll-item.show .slide-right {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  
-    .scroll-text h2 {
-      color: cyan;
-      text-shadow: 0 0 10px cyan;
-      margin-bottom: 0.5rem;
-    }
-  
-    .scroll-text p {
-      color: #d5d5d5;
-      font-size: 1.1rem;
-    }
-  
-    .scroll-img img {
-      max-width: 100%;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px cyan;
-    }
-  
-    @media (max-width: 768px) {
-      .scroll-item,
-      .scroll-item.reverse {
-        flex-direction: column;
-      }
-  
-      .slide-left,
-      .slide-right {
-        transform: translateY(60px);
-      }
-  
-      .scroll-item.show .slide-left,
-      .scroll-item.show .slide-right {
-        transform: translateY(0);
-      }
-    }
-    @media (hover: none) {
-      .flip-card:active .flip-inner {
-        transform: rotateY(180deg);
-      }
-    }
+.scroll-block {
+  max-width: 1200px;
+  margin: 0 auto 6rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* Antes: 6rem */
+}
+
+.scroll-item {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  overflow: hidden;
+}
+
+.scroll-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.slide-left {
+  transform: translateX(-60px);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 1.2s ease-in;
+}
+
+.slide-right {
+  transform: translateX(60px);
+  opacity: 0;
+  transition: transform 1s ease-out, opacity 1.2s ease-in;
+}
+
+.scroll-item.show .slide-left,
+.scroll-item.show .slide-right {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+
+.scroll-text {
+  max-width: 600px;
+}
+
+.scroll-text h2 {
+  color:  #37474f;
+  text-shadow: 0 0 10px  #37474f;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.scroll-text p {
+  color: #0f0f0f;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scroll-img img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px cyan;
+  object-fit: cover;
+}
+
+.scroll-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: #00796b;
+  padding: 10px;
+  box-shadow: 0 0 10px #4db6ac;
+}
+
+@media (max-width: 768px) {
+  .scroll-item,
+  .scroll-item.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .slide-left,
+  .slide-right {
+    transform: translateY(60px);
+  }
+
+  .scroll-item.show .slide-left,
+  .scroll-item.show .slide-right {
+    transform: translateY(0);
+  }
+
+  .scroll-text {
+    max-width: 90%;
+  }
+
+  .scroll-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .scroll-text p {
+    font-size: 1rem;
+  }
+
+  .scroll-img img,
+  .scroll-icon {
+    max-width: 80%;
+  }
+}
+
+
   </style>
   
   <script>
@@ -543,9 +893,9 @@ nav a:hover {
       <h3>Zerever</h3>
       <p>Una marca de<a href="https://www.flinq.es/" style="color: #0b5736;"> Flinq Ingeniería S.L</a></span></p>
       <div class="social">
-        <a href="https://codepen.io/Juxtopposed" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/codepen_1.png" alt="CodePen"></a>
-        <a href="https://twitter.com/juxtopposed" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/x.png" alt="Twitter"></a>
-        <a href="https://youtube.com/@juxtopposed" target="_blank" class="link"><img src="https://assets.codepen.io/9051928/youtube_1.png" alt="YouTube"></a>
+        <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.facebook.com/FlinqIngenieria/%3Flocale%3Des_ES&ved=2ahUKEwjVopW4uM2MAxVlfKQEHWhPLJcQFnoECCAQAQ&usg=AOvVaw0qt4QnwcI3LvbDMrWLJYu7" target="_blank" class="link"><img src="https://cdn-icons-png.freepik.com/256/1051/1051309.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Facebook"></a>
+        <a href="https://es.linkedin.com/company/flinq-ingenieria" target="_blank" class="link"><img src="https://cdn-icons-png.freepik.com/256/1384/1384155.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Linkedin"></a>
+        <a href="https://twitter.com/flinqingenieria" target="_blank" class="link"><img src="https://cdn-icons-png.freepik.com/256/5968/5968830.png?ga=GA1.1.199588043.1744278345&semt=ais_hybrid" alt="Twitter"></a>
       </div>
       <p style="color: #818181; font-size: smaller;">2025 © Zerever, Flinq Ingeniería SL</p>
     </div>
